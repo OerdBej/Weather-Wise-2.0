@@ -3,7 +3,6 @@ import { Link, useLocation as useRouterLocation } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-import StarIcon from '@mui/icons-material/Star';
 import CloudIcon from '@mui/icons-material/Cloud';
 
 const NavBar: React.FC = () => {
@@ -59,7 +58,7 @@ const NavBar: React.FC = () => {
   <div className={`nav-bar ${scrolled ? 'scrolled' : ''}`}>
     <nav>
       <ul>
-        {/* Order matches requested flow: Home => Sport => Weather => Rating => About */}
+        {/* Order matches requested flow: Home => Sport => Weather => About */}
         <li className={location.pathname === '/' ? 'active' : ''}>
           <Link to="/"><HomeIcon /> Home</Link>
         </li>
@@ -71,11 +70,6 @@ const NavBar: React.FC = () => {
         <li className={location.pathname === '/current-weather' ? 'active' : ''}>
           <Link to="/current-weather" onClick={(e) => handleRestrictedNav(e, '/current-weather', true, true)}>
             <CloudIcon /> Weather
-          </Link>
-        </li>
-        <li className={location.pathname === '/rating' ? 'active' : ''}>
-          <Link to="/rating" onClick={(e) => handleRestrictedNav(e, '/rating', true, true)}>
-            <StarIcon /> Rating
           </Link>
         </li>
         <li className={location.pathname === '/about' ? 'active' : ''}>

@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import SearchIcon from '@mui/icons-material/Search';
-import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import './LocationSection.css';
 
 interface LocationSectionProps {}
 
 const LocationSection: React.FC<LocationSectionProps> = () => {
   const [city, setCity] = useState('');
-  const [location, setLocation] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [cityError, setCityError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -47,9 +44,13 @@ const LocationSection: React.FC<LocationSectionProps> = () => {
           state: '',
         };
 
-        setLocation(mockLocation);
         localStorage.setItem('weatherLocation', JSON.stringify(mockLocation));
         setIsLoading(false);
+        
+        // Automatically navigate to sport selection without showing location notification
+        const selectedSport = localStorage.getItem('selectedSport') || 'Cycling';
+        localStorage.setItem('selectedSport', selectedSport);
+        navigate('/sport');
       }, 500); // Small delay to simulate API call
 
       return; // Skip the API call and use the mock data
@@ -70,17 +71,18 @@ const LocationSection: React.FC<LocationSectionProps> = () => {
       if (data.length === 0) {
         setCityError(true);
         setErrorMessage('City not found. Please check the spelling and try again.');
-        setLocation(null);
       } else {
-        setLocation(data[0]);
         localStorage.setItem('weatherLocation', JSON.stringify(data[0]));
+        // Automatically navigate to sport selection
+        const selectedSport = localStorage.getItem('selectedSport') || 'Cycling';
+        localStorage.setItem('selectedSport', selectedSport);
+        navigate('/sport');
       }
       */
     } catch (error) {
       console.error('Error fetching location:', error);
       setCityError(true);
       setErrorMessage('Failed to fetch location. Please try again.');
-      setLocation(null);
       setIsLoading(false);
     }
   };
@@ -97,16 +99,7 @@ const LocationSection: React.FC<LocationSectionProps> = () => {
     }
   };
 
-  const handleContinue = () => {
-    if (location) {
-      // Make sure we have a default sport selected before navigating
-      const selectedSport = localStorage.getItem('selectedSport') || 'Cycling';
-      localStorage.setItem('selectedSport', selectedSport);
-      
-      // Navigate to the sport selection page
-      navigate('/sport');
-    }
-  };
+  // Navigation is now handled directly in the searchLocation function
 
   return (
     <div className='location-section'>
@@ -128,6 +121,7 @@ const LocationSection: React.FC<LocationSectionProps> = () => {
               onKeyDown={handleKeyDown}
               placeholder='Enter your city (e.g. Berlin, London, New York)'
               disabled={isLoading}
+              autoFocus
             />
             <button
               className='searchButton'
@@ -151,30 +145,8 @@ const LocationSection: React.FC<LocationSectionProps> = () => {
               </p>
             </div>
           )}
-
-          {location && (
-            <div className='location-notification'>
-              <div className='location-info'>
-                <DirectionsRunIcon />
-                <p>
-                  Location set:{' '}
-                  <strong>
-                    {location.name}, {location.country}
-                  </strong>
-                </p>
-              </div>
-
-              <div className='next-button-container'>
-                <button className='next-button' onClick={handleContinue}>
-                  Continue <ArrowForwardIcon />
-                </button>
-              </div>
-            </div>
-          )}
         </div>
       </div>
-
-      {/* Sport selection modal has been removed */}
     </div>
   );
 };

@@ -50,7 +50,7 @@
   left: 25%;
   width: 50%;
   height: 3px;
-  background: linear-gradient(to right, #4CAF50, #8BC34A);
+  background: #ffd700; /* Yellow color to match navbar */
   border-radius: 3px;
   animation: pulseWidth 2s ease infinite;
 }
@@ -76,7 +76,7 @@
 }
 
 .sport-icon-wrapper.active .sport-icon {
-  box-shadow: 0 0 0 2px #4CAF50, 0 4px 12px rgba(76, 175, 80, 0.3);
+  box-shadow: 0 0 0 2px #ffd700, 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
 .sport-icon img {
@@ -100,7 +100,7 @@
 }
 
 .sport-icon-wrapper.active .sport-name {
-  color: #8BC34A;
+  color: #ffd700;
   font-weight: 600;
 }
 

@@ -9,7 +9,6 @@ import LocationSection from './components/LocationSection';
 import NavBar from './components/NavBar';
 import About from './components/About';
 import SelectSport from './components/SelectSport';
-import CurrentRating from './components/CurrentRating/CurrentRating';
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 
 function App() {
@@ -17,13 +16,13 @@ function App() {
     <LocationProvider>
       <WeatherProvider>
         <NavBar />
-        <div className="App">
+        <div className='App'>
           <Routes>
-            <Route path="/" element={<LocationSection />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/sport" element={<SelectSport />} />
-            <Route path="/rating" element={<CurrentRating />} />
-            <Route path="/current-weather" element={<CurrentWeather />} />
+            <Route path='/' element={<LocationSection />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/sport' element={<SelectSport />} />
+            {/* Rating functionality now integrated into the Weather page */}
+            <Route path='/current-weather' element={<CurrentWeather />} />
           </Routes>
         </div>
       </WeatherProvider>

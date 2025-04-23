@@ -50,11 +50,13 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({
     if (savedSport) {
       setSportSelected(savedSport);
     }
-    
+
     // Check if we have a pre-loaded location
     const savedLocation = localStorage.getItem('weatherLocation');
     if (savedLocation) {
-      console.log('Found saved location in localStorage, will use this for weather data');
+      console.log(
+        'Found saved location in localStorage, will use this for weather data'
+      );
     }
   }, []);
 
@@ -62,7 +64,10 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const fetchWeatherData = async () => {
       if (location) {
-        console.log('Location found, fetching weather data for:', location.name);
+        console.log(
+          'Location found, fetching weather data for:',
+          location.name
+        );
         try {
           setApiLoaded(false);
 
@@ -180,10 +185,10 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({
   const selectSport = (sport: string) => {
     console.log(`Selecting sport: ${sport}`);
     setSportSelected(sport);
-    
+
     // Store the selected sport in localStorage for persistence
     localStorage.setItem('selectedSport', sport);
-    
+
     // Always calculate rating when sport is selected
     if (weather) {
       console.log(`Weather data available, calculating rating`);
@@ -207,12 +212,12 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({
       console.log('No weather data available, using default rating of 7.5');
       setCyclingRating(7.5);
     }
-    
-    // Navigate to the rating page
-    console.log('Navigating to /rating');
-    navigate('/rating');
+
+    // Navigate to the weather page with the integrated rating
+    console.log('Navigating to /current-weather');
+    navigate('/current-weather');
   };
-  
+
   // Default rating if sport is selected but no weather
   useEffect(() => {
     if (sportSelected && !weather) {
@@ -235,7 +240,7 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({
       navigate('/sport');
     }
   };
-  
+
   // Helper functions for the flow
   const navigateToSport = () => {
     if (location) {
@@ -246,7 +251,7 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({
       navigate('/');
     }
   };
-  
+
   const navigateToRating = () => {
     if (location && sportSelected) {
       navigate('/rating');
