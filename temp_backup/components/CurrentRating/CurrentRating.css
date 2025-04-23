@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+  .current-rating-main-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .current-rating-second-container {
+    background-color: #2F3740;
+    color: white;
+    width: 80%;
+    max-width: 900px;
+    margin-top: 4%;
+    margin-bottom: 30%;
+    border-radius: 16%;
+  }
+
+  .current-rating-grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, auto);
+  }
+
+  .current-rating-grid-header {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column: span 12;
+    text-align: center;
+    margin: 0px;
+    padding: 2%;
+  }
+
+  .current-rating-grid-header h1 {
+    margin: 0px;
+  }
+
+  .rating-not-loaded {
+    grid-column: span 12;
+    height: 400px;
+    text-align: center;
+  }
+  
+  .circle-container {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column: span 12;
+  }
+  
+  .rate-circle {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    padding: 10px;
+    background: #2F3740;
+    border: 3px solid rgb(255, 255, 255);
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .rating-params-header {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 3;
+    grid-column-end: 8;
+  }
+
+  .rating-params-temp {
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 3;
+    grid-column-end: 8;
+  }
+  .rating-params-temp-img {
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 6;
+    grid-column-end: 8;
+    text-align: center;
+  }
+
+  .rating-params-temp-img img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .rating-params-wind {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 3;
+    grid-column-end: 7;
+  }
+  
+  .rating-params-wind-img {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 6;
+    grid-column-end: 8;
+    text-align: center;
+  }
+
+  .rating-params-wind-img img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .rating-params-pop {
+    grid-row-start: 6;
+    grid-row-end: 7;
+    grid-column-start: 3;
+    grid-column-end: 7;
+  }
+
+  .rating-params-rain-img {
+    grid-row-start: 6;
+    grid-row-end: 7;
+    grid-column-start: 6;
+    grid-column-end: 8;
+    text-align: center;
+  }
+
+  .rating-params-rain-img img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .rating-params-uvi {
+    grid-row-start: 7;
+    grid-row-end: 8;
+    grid-column-start: 3;
+    grid-column-end: 7;
+  }
+  .rating-params-uvi-img img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .rating-params-uvi-img {
+    grid-row-start: 7;
+    grid-row-end: 8;
+    grid-column-start: 6;
+    grid-column-end: 8;
+    text-align: center;
+  }
+
+  .rating-params-air-pollution {
+    grid-row-start: 8;
+    grid-row-end: 9;
+    grid-column-start: 3;
+    grid-column-end: 7;
+  }
+
+  .rating-params-air-quality-img img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .rating-params-air-quality-img {
+    grid-row-start: 8;
+    grid-row-end: 9;
+    grid-column-start: 6;
+    grid-column-end: 8;
+    text-align: center;
+  }
+
+  .rate-btn {
+    grid-row-start: 10;
+    grid-row-end: 11;
+    grid-column: span 12;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    margin-bottom: 5%;
+  }
+  
+  .rate-btn button {
+    height: 50px;
+    font: 'Bebas Neue', sans-serif;
+    padding: 0.8em 1.4em;
+    text-transform: uppercase;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .rate-btn button:hover {
+    background-color: #516F73;
+    box-shadow: 0px 15px 20px rgba(139, 145, 143, 0.4);
+    color: white;
+    transform: translateY(-7px);
+  }
+  
+  .rate-btn button:hover {
+    transform: translateY(-1px);
+  }
+  .alerts {
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 9;
+    grid-column-end: 11;
+  }
+  .real-feel-error-heat {
+    grid-row-start: 4;
+    grid-row-end: 5;
+    grid-column-start: 9;
+    grid-column-end: 11;
+  }
+  .real-feel-error-wind {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 9;
+    grid-column-end: 11;
+  }
+
+  .real-feel-error-pop {
+    grid-row-start: 6;
+    grid-row-end: 7;
+    grid-column-start: 9;
+    grid-column-end: 11;
+  }
+
+  .real-feel-error-uvi {
+    grid-row-start: 7;
+    grid-row-end: 8;
+    grid-column-start: 9;
+    grid-column-end: 11;
+  }
+  
+  .real-feel-error-pollution {
+    grid-row-start: 8;
+    grid-row-end: 9;
+    grid-column-start: 9;
+    grid-column-end: 11;
+  }

@@ -1,0 +1,28 @@
+/* 11: removing and adding the background in the middle of the circle */
+
+.circular-chart {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    max-height: 250px;
+  }
+  
+  .circular-bg {
+    fill: none;
+  }
+  
+  .circle {
+    fill: none;
+  }
+  
+  input {
+    color: rgb(212, 0, 0);
+  }
+  
+  .svg-circle-text {
+    font-size: 2rem;
+    text-anchor: middle;
+    fill: #fff;
+    font-weight: bold;
+  }
+  

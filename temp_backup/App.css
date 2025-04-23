@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300&display=swap');
+
+.App {
+  font-family: 'Bebas Neue', sans-serif;
+  /* background-color: #1f2987; */
+  background-color: #2D4B73;
+  min-height: 100vh;
+  height: auto;
+}
+
+.nav-bar ul {
+  background-color: #2F3740;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: white;
+  border-bottom: solid white 1px;
+  padding: 10px;
+  margin: 0px;
+  list-style: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4em;
+}
+
+.nav-bar li a {
+  list-style: none;
+  text-decoration: none;
+  color: white;
+}
+
+.location-section {
+  text-align: center;
+  color: white;
+  padding-top: 8%;
+}
+
+.location-section p {
+  font-size: 1.5em;
+}
+
+.location-header h1 {
+  font-size: 6em;
+  margin: 0px;
+}
+
+.searchBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:  translate(-50%,50%);
+  background: #2f3640;
+  height: 40px;
+  border-radius: 60px;
+  padding: 10px;
+  width: 300px;
+  padding: 0 6px;
+}
+
+.searchBox:hover > .searchInput {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+background: #516F73;
+color : #2f3640;
+}
+
+.searchButton {
+  color: white;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.searchInput {
+  border:none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0px;
+  color: white;
+  font-size: 1.3em;
+  font-family: 'Bebas Neue', sans-serif;
+  transition: 0.5s;
+  line-height: 40px;
+  width: 0px;
+}
+
+@media screen and (max-width: 620px) {
+.searchBox:hover > .searchInput {
+  width: 150px;
+  padding: 0 6px;
+}
+}
+
+.about-section {
+  color: #fff;
+  text-align: center;
+  padding-top: 4%;
+}
+
+.about-section h1 {
+  font-size: 2.4em;
+  margin: 0px;
+}
+
+.about-section p {
+  font-family: 'Roboto', sans-serif;;
+  font-size: 1.3em;
+  margin: 2% 10% 2% 10%;
+}
+
+.footer {
+  background-color: #0b1667;
+  border-top: solid white 1px;
+  margin: 0px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  display: flex;
+}
+
+.footer p {
+  margin: 0px;
+}
+
+.select-sport-header {
+  text-align: center;
+  color: white;
+  padding-top: 4%;
+}
+
+.select-sport-header h1 {
+  margin: 0px;
+  padding-bottom: 5%;
+  font-size: 2.4em;
+}
+
+.sport-buttons {
+  margin: 5% 20% 5% 20%;
+}
+
+.sport-btn-container img {
+  width: 100px;
+  height: 100px;
+}
+
+.sport-btn-container img:hover {
+  width: 120px;
+  height: 120px;
+}
