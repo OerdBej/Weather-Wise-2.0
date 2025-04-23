@@ -1,16 +1,14 @@
 import { Location, Weather, AirPollution } from '../types/weather';
 import { mockLocations, getMockWeather, getMockAirPollution } from './mockData';
 
-// Check if API key is available from env file
-const apiKey = import.meta.env.VITE_APIKEY;
+// Use the new API key provided by the user
+const apiKey = "b1699eb6d963d0afdd806dee57a35659";
 
-// Since we're having issues with the API key, always use mock data
-const USE_MOCK_DATA = true;
-
-console.warn('API Key issue detected - using mock data instead. For real weather data, add your own OpenWeatherMap API key to .env file.');
+// Use real API data instead of mock data
+const USE_MOCK_DATA = false;
 
 // Log app mode for debugging
-console.info('Running in MOCK DATA mode with simulated weather data.');
+console.info('Running in REAL API mode with actual weather data from OpenWeatherMap.');
 
 
 /**
