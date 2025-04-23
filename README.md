@@ -21,7 +21,18 @@ Originally built as a student project at **Wild Code School** (a 5-month web dev
 - [`@mui/icons-material`](https://mui.com/components/icons/)
 - [`@emotion/react`](https://emotion.sh/docs/introduction)
 - [`@emotion/styled`](https://emotion.sh/docs/styled)
+- [`axios`](https://axios-http.com/) - For API requests
 - **TypeScript**
+
+## 🔑 API Integrations
+
+- **OpenWeather API** - For weather data
+- **GNews API** - For sport-related news articles
+
+> **Important**: This project uses external APIs that require API keys. For security reasons, you need to provide your own API keys to use these features:
+> - For news functionality, sign up for a free API key at [GNews](https://gnews.io/)
+> - Replace the API key in `src/utils/newsApi.ts` with your own
+> - For a production environment, we recommend using environment variables instead of hardcoding API keys
 
 ---
 
@@ -48,6 +59,8 @@ Originally built as a student project at **Wild Code School** (a 5-month web dev
 - Dark/light mode toggle with saved preferences
 - Improved responsiveness on mobile devices
 - Better visual feedback on hover/click
+- Sport-specific news integration with GNews API
+- Clean, minimal design with yellow accent theme
 
 ### 🧹 Code Quality & Refactoring
 - Removed duplicate entry points (`index.tsx`, `App_new.tsx`)
@@ -79,3 +92,17 @@ Originally built as a student project at **Wild Code School** (a 5-month web dev
 ## 📌 Notes
 
 This is **Weather Wise 2.0**, a solo refactor and redesign of the original group project. It features a full migration to TypeScript, improved UI/UX, and a much cleaner, more scalable codebase.
+
+### 🛡️ Security Considerations
+
+- **API Keys**: For security, replace the GNews API key with your own in a production environment
+- **Environment Variables**: In a production setting, use environment variables for all API keys
+- **CORS**: The app is designed to work with APIs that allow cross-origin requests
+
+### 🚀 Getting Started
+
+1. Clone the repository
+2. Run `npm install` to install dependencies
+3. Replace the API keys with your own (see API Integrations section)
+4. Run `npm run dev` to start the development server
+5. Open `http://localhost:3000` in your browser
