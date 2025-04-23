@@ -2,8 +2,6 @@
 
 **WeatherActive** is a modern weather application that connects weather conditions with active lifestyles. The app provides personalized recommendations for your chosen sport with an easy-to-understand rating system based on real-time weather data.
 
-![Screenshot of WeatherActive](https://example.com/screenshot.jpg)
-
 ## ⭐ Features
 
 - **City-based Weather**: Search for any city to get current weather conditions
