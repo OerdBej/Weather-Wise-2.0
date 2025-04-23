@@ -1,19 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-  .current-rating-main-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .current-rating-second-container {
-    background-color: #2F3740;
-    color: white;
-    width: 80%;
-    max-width: 900px;
-    margin-top: 4%;
-    margin-bottom: 30%;
-    border-radius: 16%;
-  }
+.current-rating-main-container {
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-in-out;
+  padding: 0 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.current-rating-second-container {
+  background-color: #1a1a1a;
+  color: white;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+}
 
   .current-rating-grid-container {
     display: grid;
@@ -176,7 +186,8 @@
   
   .rate-btn button {
     height: 50px;
-    font: 'Bebas Neue', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
     padding: 0.8em 1.4em;
     text-transform: uppercase;
     color: #000;
@@ -187,6 +198,7 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    letter-spacing: 1px;
   }
   
   .rate-btn button:hover {
@@ -196,8 +208,98 @@
     transform: translateY(-7px);
   }
   
-  .rate-btn button:hover {
-    transform: translateY(-1px);
+  .rate-btn button:active {
+    transform: translateY(0);
+  }
+  
+  /* Sport buttons styles */
+  .sport-selection {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .sport-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .sport-btn.active {
+    background-color: #4CAF50;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+  }
+  
+  .sport-btn:hover {
+    transform: translateY(-3px);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Alerts styles */
+  .alerts {
+    margin-top: 20px;
+  }
+  
+  .alerts h2 {
+    color: #FFC107;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .real-feel-error-heat,
+  .real-feel-error-wind,
+  .real-feel-error-pop,
+  .real-feel-error-uvi,
+  .real-feel-error-pollution {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  .real-feel-error-heat p,
+  .real-feel-error-wind p,
+  .real-feel-error-pop p,
+  .real-feel-error-uvi p,
+  .real-feel-error-pollution p {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+  }
+  
+  .real-feel-error-heat {
+    border-left: 4px solid #F44336;
+  }
+  
+  .real-feel-error-wind {
+    border-left: 4px solid #2196F3;
+  }
+  
+  .real-feel-error-pop {
+    border-left: 4px solid #00BCD4;
+  }
+  
+  .real-feel-error-uvi {
+    border-left: 4px solid #FF9800;
+  }
+  
+  .real-feel-error-pollution {
+    border-left: 4px solid #9C27B0;
   }
   .alerts {
     grid-row-start: 3;

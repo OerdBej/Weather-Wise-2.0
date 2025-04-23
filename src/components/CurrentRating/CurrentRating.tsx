@@ -13,51 +13,65 @@ const CurrentRating: React.FC = () => {
     windSpeedKmh, 
     airPollutionDes, 
     airPollution, 
-    navigateToCurrentWeather 
+    navigateToCurrentWeather
   } = useWeather();
   
-  const [circleColor, setCircleColor] = useState<string>("");
+  // Removed unused circleColor state since we're using the new rating class system
   const [rainImg, setRainImg] = useState<string>("");
   const [windImg, setWindImg] = useState<string>("");
   const [uvindexImg, setUvindexImg] = useState<string>("");
+  const [selectedSport, setSelectedSport] = useState<string>(sportSelected || "Cycling");
+  const [ratingValue, setRatingValue] = useState<number | null>(cyclingRating);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   useEffect(() => {
     // Set appropriate images based on conditions
-    // These would have been set in the old context, we need to import them directly
     import('../../assets/rainImg.png').then(module => setRainImg(module.default));
     import('../../assets/windImg.png').then(module => setWindImg(module.default));
     import('../../assets/uv-indexImg.png').then(module => setUvindexImg(module.default));
-    
+  }, []);
+  
+  // Update rating value when cyclingRating changes
+  useEffect(() => {
     if (cyclingRating !== null) {
-      if (cyclingRating <= 3) {
-        setCircleColor("Red");
-      } else if (cyclingRating > 3 && cyclingRating <= 7) {
-        setCircleColor("yellow");
-      } else {
-        setCircleColor("green");
-      }
+      setIsAnimating(true);
+      // Add a slight delay for animation effect
+      setTimeout(() => {
+        setRatingValue(cyclingRating);
+        setIsAnimating(false);
+      }, 300);
     }
   }, [cyclingRating]);
+  
+  // Update selected sport when sportSelected changes
+  useEffect(() => {
+    if (sportSelected) {
+      setSelectedSport(sportSelected);
+    }
+  }, [sportSelected]);
+
+  // Sport selection handled by the separate SelectSport component
 
   const state = {
-    size: 150,
+    size: 180, // Increased size for better visibility
     strokeWidth: 12,
-    circleOneStroke: circleColor,
+    circleOneStroke: "", // No longer needed with new coloring system
     circleTwoStroke: "gray",
   };
 
   return (
     <div className="current-rating-main-container">
       <div className="current-rating-second-container">
+        
         <div className="current-rating-grid-container">
           <div className="current-rating-grid-header">
-            <h1>{sportSelected} Rating</h1>
+            <h1>{selectedSport} Rating</h1>
           </div>
           {cyclingRating !== null && cyclingRating >= 0 && weather ? (
             <>
-              <div className="circle-container">
+              <div className={`circle-container ${isAnimating ? 'animating' : ''}`}>
                 <ProgressBar
-                  progress={Number(cyclingRating)}
+                  progress={Number(ratingValue || cyclingRating)}
                   {...state}
                 />
               </div>
@@ -114,35 +128,35 @@ const CurrentRating: React.FC = () => {
                   <p>Remember to drink lots of water, it's hot.</p>
                 </div>
               ) : (
-                <></>
+                <></>              
               )}
               {windSpeedKmh >= 20 ? (
                 <div className="real-feel-error-wind">
                   <p>Take a windproof shell</p>
                 </div>
               ) : (
-                <></>
+                <></>              
               )}
               {Number((weather.hourly[0].pop * 100).toFixed(0)) >= 40 ? (
                 <div className="real-feel-error-pop">
                   <p>Grab a waterproof jacket</p>
                 </div>
               ) : (
-                <></>
+                <></>              
               )}
               {weather.current.uvi >= 5 ? (
                 <div className="real-feel-error-uvi">
                   <p>Wear sunscreen UVI is high</p>
                 </div>
               ) : (
-                <></>
+                <></>              
               )}
               {airPollution !== null && airPollution >= 3 ? (
                 <div className="real-feel-error-pollution">
                   <p>Maybe exercise indoors today</p>
                 </div>
               ) : (
-                <></>
+                <></>              
               )}
             </>
           ) : cyclingRating !== null && cyclingRating < 0 ? (
