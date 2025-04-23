@@ -1,4 +1,3 @@
-
 .current-weather-main-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -7,8 +6,14 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .current-weather-second-container {
@@ -143,7 +148,7 @@
 }
 
 /* Main temperature display */
-.weather-param-card, 
+.weather-param-card,
 .rating-param-card {
   background-color: #1a1a1a;
   border-radius: 10px;
@@ -203,9 +208,18 @@
 }
 
 @keyframes pulse {
-  0% { transform: scale(0.95); opacity: 0.7; }
-  50% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .sport-rating-summary h2 {
@@ -412,16 +426,16 @@
   .rating-params-container {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .current-weather-second-container {
     border-radius: 10px;
   }
-  
+
   .weather-content,
   .rating-content {
     padding: 1rem;
   }
-  
+
   .temp-value {
     font-size: 3rem;
   }

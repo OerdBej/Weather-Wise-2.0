@@ -36,9 +36,15 @@ const LocationSection: React.FC<LocationSectionProps> = () => {
       // FALLBACK: Create a mock location based on user input
       // This ensures the app flow works even when the API is unavailable
       setTimeout(() => {
+        // Capitalize the city name
+        const capitalizedCity = city
+          .split(' ')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join(' ');
+          
         const mockLocation = {
-          name: city,
-          country: 'Demo',
+          name: capitalizedCity,
+          country: '',  // Removed 'Demo'
           lat: 52.52,
           lon: 13.41,
           state: '',
@@ -108,44 +114,39 @@ const LocationSection: React.FC<LocationSectionProps> = () => {
         <p>Your guide to weather-optimized outdoor activities</p>
       </div>
 
-      <div className='main-container'>
-        {/* Main content area */}
-        <div className='location-content'>
-          <h2 className='step-title'>Find Your Location</h2>
-
-          <div className='search-container'>
-            <input
-              className='searchInput'
-              value={city}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown}
-              placeholder='Enter your city (e.g. Berlin, London, New York)'
-              disabled={isLoading}
-              autoFocus
-            />
-            <button
-              className='searchButton'
-              onClick={searchLocation}
-              disabled={isLoading}
-              type='button'
-            >
-              {isLoading ? (
-                <CircularProgress size={24} color='inherit' />
-              ) : (
-                <SearchIcon />
-              )}
-            </button>
-          </div>
-
-          {cityError && (
-            <div className='location-error'>
-              <p className='error-message'>
-                {errorMessage ||
-                  'There was a problem finding your location, please try again!'}
-              </p>
-            </div>
-          )}
+      <div className='search-wrapper'>
+        <div className='search-container'>
+          <input
+            className='searchInput'
+            value={city}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            placeholder='Enter Your City'
+            disabled={isLoading}
+            autoFocus
+          />
+          <button
+            className='searchButton'
+            onClick={searchLocation}
+            disabled={isLoading}
+            type='button'
+          >
+            {isLoading ? (
+              <CircularProgress size={24} color='inherit' />
+            ) : (
+              <SearchIcon />
+            )}
+          </button>
         </div>
+
+        {cityError && (
+          <div className='location-error'>
+            <p className='error-message'>
+              {errorMessage ||
+                'There was a problem finding your location, please try again!'}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

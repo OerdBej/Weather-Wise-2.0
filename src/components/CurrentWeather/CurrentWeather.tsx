@@ -72,7 +72,7 @@ const CurrentWeather: React.FC = () => {
             {/* Location and Temperature header section */}
             <header className="weather-header">
               <div className="weather-temp-location">
-                <h1 className="location-name">{location.name} {location.country}</h1>
+                <h1 className="location-name">{location.name}</h1>
                 <div className="weather-day-info">
                   <p>{currentDay}, {currentHour}H</p>
                 </div>
