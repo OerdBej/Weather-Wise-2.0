@@ -1,9 +1,9 @@
 {
-  "name": "my-weather-wise",
+  "name": "weatheractive",
   "version": "1.0.0",
   "private": true,
   "author": "Your Name",
-  "description": "A modern weather app with activity recommendations based on conditions",
+  "description": "A modern weather app that connects weather conditions with active lifestyles",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",

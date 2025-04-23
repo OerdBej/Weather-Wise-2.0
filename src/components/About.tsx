@@ -5,13 +5,13 @@ const About: React.FC = () => {
   return (
     <div className="about-section">
       <div className="about-section-container">
-        <h1 className="about-title">About Weather Wise 2.0</h1>
+        <h1 className="about-title">About WeatherActive</h1>
         
         <section className="about-content">
           <div className="overview-section">
             <h2 className="section-title">Overview</h2>
             <p className="about-description">
-              Weather Wise 2.0 is your ultimate companion for planning outdoor activities. We analyze
+              WeatherActive is your ultimate companion for planning outdoor activities. We analyze
               real-time weather data to provide personalized recommendations for your chosen sport with an
               easy-to-understand rating system that considers specific weather factors affecting each activity.
             </p>

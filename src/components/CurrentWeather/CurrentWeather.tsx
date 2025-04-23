@@ -19,6 +19,9 @@ const CurrentWeather: React.FC = () => {
   } = useWeather();
   const { location } = useLocation();
   
+  // Add state to track custom location from localStorage
+  const [currentLocation, setCurrentLocation] = useState(location);
+  
   const [humidityImg, setHumidityImg] = useState<string>("");
   const [rainImg, setRainImg] = useState<string>("");
   const [windImg, setWindImg] = useState<string>("");
@@ -27,6 +30,19 @@ const CurrentWeather: React.FC = () => {
   const [currentHour, setCurrentHour] = useState<string>("");
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [ratingValue, setRatingValue] = useState<number | null>(cyclingRating);
+  
+  // Add useEffect to check localStorage for the latest city immediately when component mounts
+  useEffect(() => {
+    // Get fresh location data from localStorage
+    const savedLocationStr = localStorage.getItem('weatherLocation');
+    if (savedLocationStr) {
+      const savedLocation = JSON.parse(savedLocationStr);
+      if (savedLocation) {
+        setCurrentLocation(savedLocation);
+        console.log('Using location from localStorage:', savedLocation.name);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     // Import images
@@ -64,13 +80,13 @@ const CurrentWeather: React.FC = () => {
 
   return (
     <div className="current-weather-main-container">
-      {apiLoaded && weather && location ? (
+      {apiLoaded && weather && currentLocation ? (
         <div className="current-weather-content">
           {/* Main header with location and current weather */}
           <div className="weather-header-wrapper">
             <div className="weather-hero">
               <div className="weather-hero-left">
-                <h1 className="location-name">{location.name}</h1>
+                <h1 className="location-name">{currentLocation.name}</h1>
                 <div className="weather-day-info">
                   <p>{currentDay}, {currentHour}H</p>
                 </div>

@@ -111,7 +111,7 @@ const LocationSection: React.FC<LocationSectionProps> = () => {
   return (
     <div className='location-section'>
       <div className='location-header'>
-        <h1>Weather Wise</h1>
+        <h1>WeatherActive</h1>
         <p>Your guide to weather-optimized outdoor activities</p>
       </div>
 

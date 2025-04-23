@@ -52,26 +52,22 @@ export const LocationProvider: React.FC<{ children: React.ReactNode }> = ({
     setErrorMessage('');
 
     try {
-      // Always use mock data to ensure the app works
-      const mockLocation = {
-        name: city,
-        country: 'Demo',
-        lat: 52.52,
-        lon: 13.41,
-        state: '',
-        local_names: {},
-      };
-
-      console.log('Using mock location data:', mockLocation);
-      setLocation(mockLocation);
-      setShowCity(true);
-      setCity('');
-      setCityError(false);
-
-      // Save to localStorage for other components
-      localStorage.setItem('weatherLocation', JSON.stringify(mockLocation));
-
-      // No navigation - let the caller control this
+      // Read the saved location from localStorage (which was set by LocationSection.tsx)
+      const savedLocationStr = localStorage.getItem('weatherLocation');
+      if (savedLocationStr) {
+        const savedLocation = JSON.parse(savedLocationStr);
+        console.log('Using saved location data:', savedLocation);
+        // Update our context with the location that was saved by LocationSection
+        setLocation(savedLocation);
+        setShowCity(true);
+        setCity('');
+        setCityError(false);
+      } else {
+        // This fallback should rarely happen, but just in case
+        console.warn('No location found in localStorage');
+        setCityError(true);
+        setErrorMessage('No location found. Please search for a city first.');
+      }
     } catch (err) {
       console.error('Error with location:', err);
       setCityError(true);

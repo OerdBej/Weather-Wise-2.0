@@ -1,8 +1,8 @@
-# Weather Wise 2.0
+# WeatherActive
 
-**Weather Wise 2.0** is a weather-aware app designed to help users understand how current weather conditions impact their performance in a selected sport. The app provides quick, relevant, and easy-to-understand insights through a sport-specific weather rating system.
+**WeatherActive** is a weather-aware app designed to help users understand how current weather conditions impact their performance in a selected sport. The app provides quick, relevant, and easy-to-understand insights through a sport-specific weather rating system.
 
-Originally built as a student project at **Wild Code School** (a 5-month web development bootcamp), this version was **fully refactored and converted from React (JavaScript) to React + TypeScript** for better type safety, scalability, and developer experience.
+Originally built as a student project, this version was **fully refactored and converted from React (JavaScript) to React + TypeScript** for better type safety, scalability, and developer experience.
 
 ---
 
@@ -47,7 +47,7 @@ Originally built as a student project at **Wild Code School** (a 5-month web dev
 - Modern gradient background with smooth transitions
 - CSS variables for consistent theming
 - Updated typography using **Poppins** and **Roboto**
-- Simplified app title to just **Weather Wise**
+- Simplified app title to **WeatherActive**
 
 ### 📱 Usability Upgrades
 - Responsive, sticky navigation with scroll effects
@@ -91,7 +91,7 @@ Originally built as a student project at **Wild Code School** (a 5-month web dev
 
 ## 📌 Notes
 
-This is **Weather Wise 2.0**, a solo refactor and redesign of the original group project. It features a full migration to TypeScript, improved UI/UX, and a much cleaner, more scalable codebase.
+This is **WeatherActive**, a modern weather application that helps users plan activities based on weather conditions. It features a full TypeScript implementation, intuitive UI/UX, and a clean, scalable codebase.
 
 ### 🛡️ Security Considerations
 
