@@ -20,7 +20,6 @@ const CurrentWeather: React.FC = () => {
   const { location } = useLocation();
   
   const [humidityImg, setHumidityImg] = useState<string>("");
-  const [sunImg, setSunImg] = useState<string>("");
   const [rainImg, setRainImg] = useState<string>("");
   const [windImg, setWindImg] = useState<string>("");
   const [uvindexImg, setUvindexImg] = useState<string>("");
@@ -32,7 +31,6 @@ const CurrentWeather: React.FC = () => {
   useEffect(() => {
     // Import images
     import('../../assets/humidityImg.png').then(module => setHumidityImg(module.default));
-    import('../../assets/sunImg.png').then(module => setSunImg(module.default));
     import('../../assets/rainImg.png').then(module => setRainImg(module.default));
     import('../../assets/windImg.png').then(module => setWindImg(module.default));
     import('../../assets/uv-indexImg.png').then(module => setUvindexImg(module.default));
@@ -66,178 +64,240 @@ const CurrentWeather: React.FC = () => {
 
   return (
     <div className="current-weather-main-container">
-      <div className="current-weather-second-container">
-        {apiLoaded && weather && location ? (
-          <>
-            {/* Location and Temperature header section */}
-            <header className="weather-header">
-              <div className="weather-temp-location">
+      {apiLoaded && weather && location ? (
+        <div className="current-weather-content">
+          {/* Main header with location and current weather */}
+          <div className="weather-header-wrapper">
+            <div className="weather-hero">
+              <div className="weather-hero-left">
                 <h1 className="location-name">{location.name}</h1>
                 <div className="weather-day-info">
                   <p>{currentDay}, {currentHour}H</p>
                 </div>
                 <div className="temperature-display">
-                  <p className="temp-value">{weather.current.temp}°</p>
+                  <p className="temp-value">{weather.current.temp.toFixed(0)}°</p>
                   <div className="feels-like">
-                    <p>Feels like {weather.current.feels_like}°C</p>
+                    <p>Feels like {weather.current.feels_like.toFixed(0)}°C</p>
                   </div>
                 </div>
                 <div className="weather-description">
                   <img 
-                    src={`https://openweathermap.org/img/wn/${weather.current.weather[0].icon}.png`} 
+                    src={`https://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`} 
                     alt={weather.current.weather[0].description} 
                   />
                   <p>{weather.current.weather[0].description}</p>
                 </div>
               </div>
-              
               {/* Sport rating circle */}
               {cyclingRating !== null && cyclingRating >= 0 && (
-                <div className="sport-rating-summary">
-                  <h2>{sportSelected || "Sport"} Rating</h2>
-                  <div className={`circle-container ${isAnimating ? 'animating' : ''}`}>
-                    <ProgressBar
-                      progress={Number(ratingValue || cyclingRating)}
-                      {...progressBarState}
-                    />
+                <div className="weather-hero-right">
+                  <div className="sport-rating-summary">
+                    <h2>{sportSelected || "Sport"} Rating</h2>
+                    <div className={`circle-container ${isAnimating ? 'animating' : ''}`}>
+                      <ProgressBar
+                        progress={Number(ratingValue || 0)}
+                        size={progressBarState.size}
+                        strokeWidth={progressBarState.strokeWidth}
+                        circleOneStroke={progressBarState.circleOneStroke}
+                        circleTwoStroke={
+                          ratingValue !== null ? 
+                            ratingValue >= 7 ? '#ffd700' : 
+                            ratingValue >= 4 ? '#ffa500' : 
+                            '#ff4500' : 
+                            '#ffd700'
+                        }
+                      />
+                    </div>
                   </div>
                 </div>
               )}
-            </header>
+            </div>
+          </div>
 
-            {/* Weather parameters section */}
-            <section className="weather-conditions-section">
-              <h2>Weather Conditions</h2>
-              <div className="weather-params-container">
-                <div className="weather-param-card">
-                  <p>Rain Probability</p>
-                  <p>{((weather.hourly[0].pop) * 100)}%</p>
-                  <img src={weather.hourly[0].pop <= 0.2 ? sunImg : rainImg} alt="Rain probability" />
-                </div>
-                <div className="weather-param-card">
-                  <p>Visibility</p>
-                  <p>{((weather.current.visibility) / 1000)} km</p>
-                  <img src={eyeImg} alt="visibility" />
-                </div>
-                <div className="weather-param-card">
-                  <p>Wind Speed</p>
-                  <p>{windSpeedKmh} km/h</p>
-                  <img src={windImg} alt="wind" />
-                </div>
-                <div className="weather-param-card">
-                  <p>Humidity</p>
-                  <p>{weather.current.humidity}%</p>
-                  <img src={humidityImg} alt="humidity" />
-                </div>
-                <div className="weather-param-card">
-                  <p>UV Index</p>
-                  <p>{weather.current.uvi}</p>
-                  <img src={uvindexImg} alt="UV Index" />
-                </div>
-                <div className="weather-param-card">
-                  <p>Air Quality</p>
-                  <p>{airPollutionDes}</p>
-                  <img src={airquality} alt="Air Quality" />
+          {/* Weather Info Cards */}
+          <div className="weather-info-area">
+            <div className="weather-grid-container">
+              {/* Weather Conditions Section */}
+              <div className="weather-grid-section current-conditions">
+                <h2>Current Conditions</h2>
+                <div className="weather-cards-grid">
+                  <div className="weather-card">
+                    <div className="card-icon">
+                      <img src={heat} alt="Temperature" />
+                    </div>
+                    <div className="card-content">
+                      <h3>Temperature</h3>
+                      <p>{weather.current.temp.toFixed(0)}°C</p>
+                    </div>
+                  </div>
+                  
+                  <div className="weather-card">
+                    <div className="card-icon">
+                      <img src={humidityImg} alt="Humidity" />
+                    </div>
+                    <div className="card-content">
+                      <h3>Humidity</h3>
+                      <p>{weather.current.humidity}%</p>
+                    </div>
+                  </div>
+                  
+                  <div className="weather-card">
+                    <div className="card-icon">
+                      <img src={windImg} alt="Wind" />
+                    </div>
+                    <div className="card-content">
+                      <h3>Wind</h3>
+                      <p>{windSpeedKmh} km/h</p>
+                    </div>
+                  </div>
+                  
+                  <div className="weather-card">
+                    <div className="card-icon">
+                      <img src={rainImg} alt="Rain" />
+                    </div>
+                    <div className="card-content">
+                      <h3>Rain Chance</h3>
+                      <p>{(weather.hourly[0].pop * 100).toFixed(0)}%</p>
+                    </div>
+                  </div>
+                  
+                  <div className="weather-card">
+                    <div className="card-icon">
+                      <img src={uvindexImg} alt="UV Index" />
+                    </div>
+                    <div className="card-content">
+                      <h3>UV Index</h3>
+                      <p>{weather.current.uvi.toFixed(1)}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="weather-card">
+                    <div className="card-icon">
+                      <img src={eyeImg} alt="Visibility" />
+                    </div>
+                    <div className="card-content">
+                      <h3>Visibility</h3>
+                      <p>{(weather.current.visibility / 1000).toFixed(1)} km</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </section>
-            
-            {/* Sport suitability section */}
-            {cyclingRating !== null && cyclingRating >= 0 && (
-              <section className="sport-suitability-section">
-                <h2>{sportSelected || "Sport"} Suitability Factors</h2>
-                <div className="rating-params-container">
-                  <div className="rating-param-card">
-                    <p>Temperature Feel</p>
-                    <p>{weather.current.feels_like.toFixed(0)}°C</p>
-                    <img src={heat} alt="heat" />
-                  </div>
-                  <div className="rating-param-card">
-                    <p>Wind Impact</p>
-                    <p>{windSpeedKmh} km/h</p>
-                    <img src={windImg} alt="wind" />
-                  </div>
-                  <div className="rating-param-card">
-                    <p>Rain Chance</p>
-                    <p>{(weather.hourly[0].pop * 100).toFixed(0)}%</p>
-                    <img src={rainImg} alt="rain" />
-                  </div>
-                  <div className="rating-param-card">
-                    <p>UV Exposure</p>
-                    <p>{weather.current.uvi}</p>
-                    <img src={uvindexImg} alt="UV Index" />
-                  </div>
-                  <div className="rating-param-card">
-                    <p>Air Quality</p>
-                    <p>{airPollutionDes}</p>
-                    <img src={airquality} alt="Air Quality" />
+
+              {/* Sport Rating Factors */}
+              {cyclingRating !== null && cyclingRating >= 0 && (
+                <div className="weather-grid-section sport-suitability">
+                  <h2>{sportSelected || "Sport"} Suitability</h2>
+                  <div className="weather-cards-grid">
+                    <div className="weather-card">
+                      <div className="card-icon">
+                        <img src={heat} alt="Temperature Feel" />
+                      </div>
+                      <div className="card-content">
+                        <h3>Temperature Feel</h3>
+                        <p>{weather.current.feels_like.toFixed(0)}°C</p>
+                      </div>
+                    </div>
+                    
+                    <div className="weather-card">
+                      <div className="card-icon">
+                        <img src={windImg} alt="Wind Impact" />
+                      </div>
+                      <div className="card-content">
+                        <h3>Wind Impact</h3>
+                        <p>{windSpeedKmh} km/h</p>
+                      </div>
+                    </div>
+                    
+                    <div className="weather-card">
+                      <div className="card-icon">
+                        <img src={rainImg} alt="Rain Impact" />
+                      </div>
+                      <div className="card-content">
+                        <h3>Rain Impact</h3>
+                        <p>{(weather.hourly[0].pop * 100).toFixed(0)}%</p>
+                      </div>
+                    </div>
+                    
+                    <div className="weather-card">
+                      <div className="card-icon">
+                        <img src={airquality} alt="Air Quality" />
+                      </div>
+                      <div className="card-content">
+                        <h3>Air Quality</h3>
+                        <p>{airPollutionDes}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </section>
-            )}
-            
-            {/* Alerts section */}
-            <section className="alerts-section">
-              <h2>Weather Alerts & Tips</h2>
-              <div className="alerts-container">
-                {Number(weather.current.feels_like.toFixed(0)) >= 30 && (
-                  <div className="alert-card alert-heat">
-                    <p>Remember to drink lots of water, it's hot.</p>
-                  </div>
-                )}
-                
-                {windSpeedKmh >= 20 && (
-                  <div className="alert-card alert-wind">
-                    <p>Take a windproof shell</p>
-                  </div>
-                )}
-                
-                {Number((weather.hourly[0].pop * 100).toFixed(0)) >= 40 && (
-                  <div className="alert-card alert-pop">
-                    <p>Grab a waterproof jacket</p>
-                  </div>
-                )}
-                
-                {weather.current.uvi >= 5 && (
-                  <div className="alert-card alert-uvi">
-                    <p>Wear sunscreen UVI is high</p>
-                  </div>
-                )}
-                
-                {airPollution !== null && airPollution >= 3 && (
-                  <div className="alert-card alert-pollution">
-                    <p>Maybe exercise indoors today</p>
-                  </div>
-                )}
-
-                {/* If no alerts are active, show a positive message */}
-                {!(Number(weather.current.feels_like.toFixed(0)) >= 30) && 
-                  !(windSpeedKmh >= 20) && 
-                  !(Number((weather.hourly[0].pop * 100).toFixed(0)) >= 40) && 
-                  !(weather.current.uvi >= 5) && 
-                  !(airPollution !== null && airPollution >= 3) && (
-                    <div className="alert-card alert-good">
-                      <p>Great conditions for {sportSelected || "your activity"}!</p>
+              )}
+              
+              {/* Weather Alerts Section */}
+              <div className="weather-grid-section alerts-section">
+                <h2>Weather Alerts & Tips</h2>
+                <div className="alerts-grid">
+                  {Number(weather.current.feels_like.toFixed(0)) >= 30 && (
+                    <div className="alert-card alert-heat">
+                      <p>Remember to drink lots of water, it's hot.</p>
                     </div>
                   )}
+                  
+                  {windSpeedKmh >= 20 && (
+                    <div className="alert-card alert-wind">
+                      <p>Take a windproof shell</p>
+                    </div>
+                  )}
+                  
+                  {Number((weather.hourly[0].pop * 100).toFixed(0)) >= 40 && (
+                    <div className="alert-card alert-pop">
+                      <p>Grab a waterproof jacket</p>
+                    </div>
+                  )}
+                  
+                  {weather.current.uvi >= 5 && (
+                    <div className="alert-card alert-uvi">
+                      <p>Wear sunscreen UVI is high</p>
+                    </div>
+                  )}
+                  
+                  {airPollution !== null && airPollution >= 3 && (
+                    <div className="alert-card alert-pollution">
+                      <p>Maybe exercise indoors today</p>
+                    </div>
+                  )}
+
+                  {/* If no alerts are active, show a positive message */}
+                  {!(Number(weather.current.feels_like.toFixed(0)) >= 30) && 
+                    !(windSpeedKmh >= 20) && 
+                    !(Number((weather.hourly[0].pop * 100).toFixed(0)) >= 40) && 
+                    !(weather.current.uvi >= 5) && 
+                    !(airPollution !== null && airPollution >= 3) && (
+                      <div className="alert-card alert-good">
+                        <p>Great conditions for {sportSelected || "your activity"}!</p>
+                      </div>
+                    )}
+                </div>
               </div>
-            </section>
-          </>
-        ) : cyclingRating !== null && cyclingRating < 0 ? (
-          <div className="weather-not-loaded">
-            <h3>WOW it's wild out there</h3>
+            </div>
+          </div>
+        </div>
+      ) : cyclingRating !== null && cyclingRating < 0 ? (
+        <div className="weather-placeholder">
+          <div className="weather-placeholder-content">
+            <h2>WOW it's wild out there</h2>
             <p>
               Sorry we don't recommend you exercise outside today, try another
               location to check out our rating
             </p>
           </div>
-        ) : (
-          <div className="weather-not-loaded">
-            <h3>The weather is not loaded</h3>
-            <p>Please check you have input a location</p>
+        </div>
+      ) : (
+        <div className="weather-placeholder">
+          <div className="weather-placeholder-content">
+            <h2>Please search for a city</h2>
+            <p>Enter a city name in the search bar above to view weather information</p>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
