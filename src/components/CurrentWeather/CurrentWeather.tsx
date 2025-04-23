@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useWeather } from "../../context/WeatherContext";
 import { useLocation } from "../../context/LocationContext";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import eyeImg from "../../assets/eyeImg.png";
 import "../CurrentWeather/CurrentWeather.css";
 
 const CurrentWeather: React.FC = () => {
-  const { weather, windSpeedKmh, apiLoaded } = useWeather();
+  const { weather, windSpeedKmh, apiLoaded, navigateToRating } = useWeather();
   const { location } = useLocation();
   
   const [humidityImg, setHumidityImg] = useState<string>("");
@@ -31,6 +32,7 @@ const CurrentWeather: React.FC = () => {
     setCurrentHour(now.getHours().toString());
   }, []);
 
+  
   return (
     <div className="current-weather-main-container">
       <div className="current-weather-second-container">
@@ -83,6 +85,16 @@ const CurrentWeather: React.FC = () => {
                   <p>UV Index</p>
                   <p>{weather.current.uvi}</p>
                   <img src={uvindexImg} alt="UV Index" />
+                </div>
+                
+                {/* Continue button to Rating page */}
+                <div className="continue-button-container">
+                  <button 
+                    className="continue-button" 
+                    onClick={() => navigateToRating()}
+                  >
+                    Continue to Rating <ArrowForwardIcon />
+                  </button>
                 </div>
               </>
             ) : (

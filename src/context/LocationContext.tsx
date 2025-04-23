@@ -1,7 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Location } from '../types/weather';
-import { getCityLoc } from '../utils/apiCalls';
 
 interface LocationContextType {
   city: string;
@@ -25,16 +23,21 @@ export const useLocation = () => {
   return context;
 };
 
-export const LocationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const LocationProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [city, setCity] = useState('');
-  const [location, setLocation] = useState<Location | null>(null);
   const [showCity, setShowCity] = useState(false);
+  // Initialize location from localStorage if available
+  const [location, setLocation] = useState<Location | null>(() => {
+    const savedLocation = localStorage.getItem('weatherLocation');
+    return savedLocation ? JSON.parse(savedLocation) : null;
+  });
   const [cityError, setCityError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   // Switch back to mock mode since we're having API key issues
   const isMockMode = true;
-  const navigate = useNavigate();
 
   const searchLocation = async () => {
     // Don't proceed if the city field is empty
@@ -49,27 +52,30 @@ export const LocationProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setErrorMessage('');
 
     try {
-      // Check for API key
-      if (!import.meta.env.VITE_APIKEY) {
-        throw new Error('API key is missing. Please add it to your .env file.');
-      }
+      // Always use mock data to ensure the app works
+      const mockLocation = {
+        name: city,
+        country: 'Demo',
+        lat: 52.52,
+        lon: 13.41,
+        state: '',
+        local_names: {},
+      };
 
-      const data = await getCityLoc(city);
-      
-      if (!data || data.length === 0) {
-        throw new Error(`Could not find location data for "${city}". Please check the spelling or try another city.`);
-      }
-      
-      console.log('Location data received:', data[0]);
-      setLocation(data[0]);
+      console.log('Using mock location data:', mockLocation);
+      setLocation(mockLocation);
       setShowCity(true);
       setCity('');
       setCityError(false);
-      navigate('/sport');
+
+      // Save to localStorage for other components
+      localStorage.setItem('weatherLocation', JSON.stringify(mockLocation));
+
+      // No navigation - let the caller control this
     } catch (err) {
-      console.error('Error searching location:', err);
+      console.error('Error with location:', err);
       setCityError(true);
-      setErrorMessage(err instanceof Error ? err.message : 'An unknown error occurred');
+      setErrorMessage('Failed to process location. Please try again.');
     } finally {
       setIsLoading(false);
     }

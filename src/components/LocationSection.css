@@ -1,0 +1,820 @@
+/* LocationSection.css */
+.location-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  background: #1a1a1a; /* Dark background */
+  color: #ffffff;
+  min-height: calc(100vh - 70px); /* Full height minus navbar */
+}
+
+.location-notification {
+  padding: 1.2rem 1.5rem;
+  margin-top: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #121212; /* Very dark background */
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: #ffd700; /* Gold text */
+  font-size: 1rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.location-notification p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.location-info {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.location-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.location-header h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #ffd700; /* Gold/yellow color */
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.location-header p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  color: #e0e0e0; /* Light gray text */
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Simple flow container */
+.main-container {
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-out;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Step setup */
+.setup-step {
+  background-color: #222222; /* Darker background */
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 1px solid #3a3a3a;
+  flex: 1;
+  min-width: 250px;
+  max-width: 450px;
+  height: fit-content;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.setup-step.active {
+  border-color: #ffd700; /* Gold/yellow border */
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.setup-step.completed {
+  opacity: 0.9;
+  border-color: rgba(255, 215, 0, 0.4); /* Faded gold border */
+}
+
+.setup-step.inactive {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.location-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-title {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  color: #ffd700; /* Gold/yellow text */
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Setup flow container */
+.setup-flow-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Step indicators */
+.step-indicators {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.step-indicator {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #3a3a3a; /* Dark gray background */
+  color: #c0c0c0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.step-indicator.active {
+  background-color: #ffd700; /* Gold/yellow active indicator */
+  color: #1a1a1a; /* Dark text for contrast */
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+}
+
+.step-connector {
+  height: 3px;
+  width: 100px;
+  background-color: #3a3a3a; /* Dark gray connector */
+  margin: 0 10px;
+}
+
+/* Setup steps */
+.setup-step {
+  background-color: #1a1a1a; /* Dark background */
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.setup-step.active {
+  border-color: #4caf50;
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+}
+
+.setup-step.completed {
+  border-color: #deeadd;
+  opacity: 0.9;
+}
+
+.setup-step.inactive {
+  filter: grayscale(1);
+  opacity: 0.6;
+}
+
+.step-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  color: #333;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #4caf50;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  margin-right: 12px;
+}
+
+/* Search box styling */
+.search-container {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid #333;
+  margin: 0 0 1.5rem 0;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 1.2rem 1.5rem;
+  border: none;
+  font-size: 1.1rem;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #1a1a1a; /* Darker input background */
+  color: #e0e0e0; /* Light text */
+  letter-spacing: 0.02em;
+}
+
+.search-container:focus-within {
+  box-shadow: 0 6px 18px rgba(255, 215, 0, 0.15);
+  border-color: #ffd700; /* Gold/yellow border when focused */
+}
+
+.searchButton {
+  width: 65px;
+  background-color: #ffd700; /* Gold/yellow button */
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: #1a1a1a; /* Dark text */
+  font-size: 1.25rem;
+}
+
+.searchButton:hover {
+  background-color: #ffcc00; /* Slightly darker gold on hover */
+}
+
+.searchButton:disabled {
+  background-color: #7a7244; /* Muted gold when disabled */
+  cursor: not-allowed;
+}
+
+/* Location error */
+.location-error {
+  margin: 0.8rem 0;
+  color: #ff6b6b; /* Bright red for errors */
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: rgba(100, 0, 0, 0.3); /* Dark red background */
+}
+
+/* Selected location display */
+.selected-location {
+  margin: 1.2rem 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffd700; /* Gold/yellow text */
+  font-family: 'Montserrat', sans-serif;
+  padding: 0.7rem 1rem;
+  background-color: rgba(255, 215, 0, 0.15);
+  border-radius: 8px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.selected-location svg {
+  color: #ffd700; /* Gold/yellow icon */
+}
+
+/* Sport selection */
+.sport-selection-section {
+  margin-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 1rem;
+}
+
+.sport-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.sport-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #1a1a1a; /* Dark background */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sport-option:hover {
+  background-color: rgba(255, 215, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sport-option.selected {
+  border-color: #ffd700; /* Gold/yellow border */
+  background-color: #2a2a2a; /* Slightly lighter dark background */
+}
+
+.sport-icon-container {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #2a2a2a; /* Darker background for icons */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.sport-option.selected .sport-icon-container {
+  box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+  background-color: #ffd700; /* Gold background for selected sport */
+}
+
+.sport-icon-container img {
+  width: 65%;
+  height: 65%;
+  object-fit: contain;
+}
+
+.sport-option p {
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #c0c0c0; /* Light gray text */
+  transition: all 0.2s ease;
+}
+
+.sport-option.selected p {
+  color: #ffd700; /* Gold/yellow text for selected sport */
+  font-weight: 500;
+}
+
+/* Next button */
+.next-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 1rem;
+}
+
+.next-button {
+  background-color: #ffd700; /* Gold/yellow button */
+  color: #1a1a1a; /* Dark text */
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.next-button:hover {
+  background-color: #ffcc00; /* Slightly darker gold */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 215, 0, 0.3);
+}
+
+.next-button:disabled {
+  background-color: #7a7244; /* Muted gold */
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Continue button */
+.continue-button-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.search-button {
+  background-color: #ffd700; /* Gold/yellow button */
+  color: #1a1a1a; /* Dark text */
+  border: none;
+  border-radius: 30px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.search-button:hover {
+  background-color: #ffcc00; /* Slightly darker gold */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 215, 0, 0.3);
+}
+
+.search-button:disabled {
+  background-color: #7a7244; /* Muted gold */
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Selected sport display */
+.selected-sport {
+  margin-top: 1rem;
+  display: none; /* Hidden in dashboard layout */
+}
+
+/* Weather preview panel */
+.weather-preview-placeholder {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #a0aec0;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  gap: 1.5rem;
+}
+
+.placeholder-icon {
+  font-size: 4rem !important;
+  opacity: 0.4;
+}
+
+.weather-preview-content {
+  padding: 0.5rem;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.weather-icon {
+  text-align: center;
+  margin: 0 auto 1.5rem;
+  height: 80px;
+  position: relative;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-icon .sun-icon {
+  color: #f6ad55;
+  font-size: 3.5rem;
+  animation: pulse 2s infinite ease-in-out;
+  opacity: 0;
+  position: absolute;
+}
+
+.weather-icon .cloud-icon {
+  color: #a0aec0;
+  font-size: 3rem;
+  opacity: 0;
+  position: absolute;
+}
+
+.weather-icon.clear .sun-icon {
+  opacity: 1;
+}
+
+.weather-icon.clouds .sun-icon {
+  opacity: 0.4;
+  right: 15px;
+}
+
+.weather-icon.clouds .cloud-icon {
+  opacity: 0.8;
+  left: 15px;
+}
+
+.weather-icon.rain .cloud-icon, 
+.weather-icon.drizzle .cloud-icon,
+.weather-icon.thunderstorm .cloud-icon,
+.weather-icon.snow .cloud-icon {
+  opacity: 0.9;
+  transform: scale(1.2);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* Weather details */
+.weather-main-info {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.weather-main-info h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem;
+  color: #2d3748;
+}
+
+.current-temp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.current-temp span {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.current-temp svg {
+  color: #f6ad55;
+  font-size: 1.5rem;
+}
+
+.weather-description {
+  font-family: 'Montserrat', sans-serif;
+  color: #4a5568;
+  margin: 0.5rem 0;
+  text-transform: capitalize;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.weather-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.weather-detail-item svg {
+  color: #5c8adc;
+  font-size: 1.2rem;
+}
+
+.weather-detail-item p {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+/* Action buttons */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.get-rating-btn {
+  background-color: #5c8adc;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(92, 138, 220, 0.25);
+}
+
+.get-rating-btn:hover {
+  background-color: #4a75c4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(92, 138, 220, 0.3);
+}
+
+.view-weather-btn {
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 2px solid rgba(92, 138, 220, 0.4);
+  color: #5c8adc;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.view-weather-btn:hover {
+  background-color: rgba(92, 138, 220, 0.1);
+  border-color: #5c8adc;
+}
+
+.select-sport-prompt {
+  color: #718096;
+  text-align: center;
+  font-style: italic;
+  margin: 0.5rem 0;
+  font-family: 'Montserrat', sans-serif;
+  padding: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+}
+
+/* Modal styles */
+.sport-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 550px;
+  background-color: #1a1a1a;
+  border: 2px solid #2a2a2a;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 15px;
+  outline: none;
+  color: white;
+  animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 0.75rem;
+}
+
+.modal-header h2 {
+  font-family: 'Quicksand', sans-serif;
+  color: #ffd700;
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0.5rem;
+}
+
+.close-button:hover {
+  color: #ffd700;
+}
+
+.sport-options-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .main-container {
+    width: 90%;
+  }
+  
+  .location-content {
+    padding: 1rem;
+  }
+  
+  .location-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .step-title {
+    font-size: 1.2rem;
+  }
+  
+  .sport-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .step-connector {
+    width: 40px;
+  }
+
+  .sport-options {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+
+  .sport-icon-container {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .location-notification {
+    flex-direction: column;
+    padding: 1.2rem;
+    gap: 1rem;
+  }
+
+  .next-button-container {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .next-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .location-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .location-section {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .main-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .step-indicator {
+    width: 30px;
+    height: 30px;
+  }
+
+  .step-connector {
+    width: 30px;
+  }
+  
+  .search-container {
+    max-width: 100%;
+  }
+}

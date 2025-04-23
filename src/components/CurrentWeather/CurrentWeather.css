@@ -231,3 +231,38 @@
     font-size: 1.3em;
     margin: 5%;
   }
+  
+  /* Continue button styling */
+  .continue-button-container {
+    grid-column: span 12;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .continue-button {
+    background-color: #ffd700; /* Gold/yellow accent color */
+    color: #000000;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .continue-button:hover {
+    background-color: #ffdf33;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .continue-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
