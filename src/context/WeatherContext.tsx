@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Weather, AirQualityDescription } from '../types/weather';
-import { getCyclingStatus } from '../utils/sportsLogic';
+import { getSportRating } from '../utils/sportsLogic';
 import { useLocation } from './LocationContext';
 
 interface WeatherContextType {
@@ -193,13 +193,20 @@ export const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({
     if (weather) {
       console.log(`Weather data available, calculating rating`);
       try {
-        const totalRate = getCyclingStatus(
-          weather.current.feels_like,
-          windSpeedKmh,
-          weather.hourly[0].pop,
-          weather.current.uvi
+        // Use the new sport-specific rating system
+        const totalRate = getSportRating(
+          sport, // Pass the actual sport name
+          {
+            feelsLike: weather.current.feels_like,
+            windSpeed: windSpeedKmh,
+            precipitation: weather.hourly[0].pop,
+            uvIndex: weather.current.uvi,
+            humidity: weather.current.humidity,
+            visibility: weather.current.visibility / 1000, // Convert to km
+            // waterTemp would be added here if available from API
+          }
         );
-        console.log(`Calculated rating: ${totalRate}`);
+        console.log(`Calculated ${sport} rating: ${totalRate}`);
         setCyclingRating(typeof totalRate === 'number' ? totalRate : null);
       } catch (err) {
         console.error('Error calculating cycling status:', err);

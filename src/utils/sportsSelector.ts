@@ -1,5 +1,5 @@
-import cyclingImg from "../assets/cyclingImg.png";
-import runningImg from "../assets/runningImg.png";
+import cyclingImg from '../assets/cyclingImg.png';
+import runningImg from '../assets/runningImg.png';
 
 interface SportOption {
   name: string;
@@ -16,24 +16,58 @@ const swimmingImg = cyclingImg;
 
 export const sportsOptions: SportOption[] = [
   {
-    name: "Cycling",
+    name: 'Cycling',
     img: cyclingImg,
-    description: "Get insights on the best conditions for cycling in your area",
-    idealConditions: ["Low wind", "Moderate temperature", "Dry conditions", "Good air quality"],
-    weatherFactors: ["Wind speed", "Temperature", "Precipitation", "UV index", "Air quality"]
+    description: 'Get insights on the best conditions for cycling in your area',
+    idealConditions: [
+      'Low wind',
+      'Moderate temperature',
+      'Dry conditions',
+      'Good air quality',
+    ],
+    weatherFactors: [
+      'Wind speed',
+      'Temperature',
+      'Precipitation',
+      'UV index',
+      'Air quality',
+    ],
   },
   {
-    name: "Hiking",
+    name: 'Hiking',
     img: hikingImg,
-    description: "Plan the perfect hiking trip with our weather-based recommendations",
-    idealConditions: ["Clear skies", "Moderate temperature", "Low precipitation chance", "Low humidity"],
-    weatherFactors: ["Visibility", "Temperature", "Precipitation chance", "UV index", "Wind chill"]
+    description:
+      'Plan the perfect hiking trip with our weather-based recommendations',
+    idealConditions: [
+      'Clear skies',
+      'Moderate temperature',
+      'Low precipitation chance',
+      'Low humidity',
+    ],
+    weatherFactors: [
+      'Visibility',
+      'Temperature',
+      'Precipitation chance',
+      'UV index',
+      'Wind chill',
+    ],
   },
   {
-    name: "Swimming",
+    name: 'Swimming',
     img: swimmingImg,
-    description: "Find the best conditions for outdoor swimming activities",
-    idealConditions: ["Warm temperature", "Low wind", "No precipitation", "High UV protection"],
-    weatherFactors: ["Water temperature", "Air temperature", "UV index", "Wind speed", "Precipitation"]
+    description: 'Find the best conditions for outdoor swimming activities',
+    idealConditions: [
+      'Warm temperature',
+      'Low wind',
+      'No precipitation',
+      'High UV protection',
+    ],
+    weatherFactors: [
+      'Water temperature',
+      'Air temperature',
+      'UV index',
+      'Wind speed',
+      'Precipitation',
+    ],
   },
 ];

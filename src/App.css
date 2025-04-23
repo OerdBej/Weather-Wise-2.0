@@ -27,6 +27,7 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-color);
   font-family: 'Quicksand', sans-serif;
+  min-height: 100vh;
 }
 
 .App {
@@ -37,6 +38,9 @@ body {
   position: relative;
   color: var(--text-light);
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .nav-bar {

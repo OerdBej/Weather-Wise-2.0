@@ -10,6 +10,7 @@ import NavBar from './components/NavBar';
 import About from './components/About';
 import SelectSport from './components/SelectSport';
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             {/* Rating functionality now integrated into the Weather page */}
             <Route path='/current-weather' element={<CurrentWeather />} />
           </Routes>
+          <Footer />
         </div>
       </WeatherProvider>
     </LocationProvider>
