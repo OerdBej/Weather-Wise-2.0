@@ -1,28 +1,193 @@
-/* 11: removing and adding the background in the middle of the circle */
+/* Enhanced progress bar with pulsating effects and animations */
 
 .circular-chart {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
-    max-height: 250px;
+  display: block;
+  margin: 20px auto;
+  max-width: 100%;
+  max-height: 250px;
+  position: relative;
+}
+
+.circular-bg {
+  fill: none;
+  stroke-width: 3.8;
+  animation: pulse 2s infinite;
+  transform-origin: center;
+  filter: drop-shadow(0 0 5px var(--circle-glow-color, #4da6ff));
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
   }
-  
-  .circular-bg {
-    fill: none;
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
   }
-  
-  .circle {
-    fill: none;
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
   }
-  
-  input {
-    color: rgb(212, 0, 0);
+}
+
+/* Pulsating rings effect */
+.pulse-ring {
+  fill: none;
+  stroke-width: 2;
+  opacity: 0.2;
+  animation: pulse-outer 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.pulse-ring-2 {
+  animation-delay: 0.5s;
+}
+
+.pulse-ring-3 {
+  animation-delay: 1s;
+}
+
+@keyframes pulse-outer {
+  0% {
+    stroke-width: 0.5;
+    transform: scale(1);
+    opacity: 0.3;
   }
-  
-  .svg-circle-text {
-    font-size: 2rem;
-    text-anchor: middle;
-    fill: #fff;
-    font-weight: bold;
+  50% {
+    stroke-width: 1;
+    transform: scale(1.1);
+    opacity: 0.15;
   }
-  
+  100% {
+    stroke-width: 0.5;
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.circle {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease-in-out;
+}
+
+input {
+  color: rgb(212, 0, 0);
+}
+
+.svg-circle-text {
+  font-size: 2rem;
+  text-anchor: middle;
+  fill: #fff;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  animation: text-pulse 2s infinite;
+}
+
+@keyframes text-pulse {
+  0% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+/* Rating color classes */
+.rating-excellent {
+  stroke: #4CAF50;
+  --circle-glow-color: #4CAF50;
+}
+
+.rating-good {
+  stroke: #8BC34A;
+  --circle-glow-color: #8BC34A;
+}
+
+.rating-average {
+  stroke: #FFC107;
+  --circle-glow-color: #FFC107;
+}
+
+.rating-poor {
+  stroke: #FF9800;
+  --circle-glow-color: #FF9800;
+}
+
+.rating-bad {
+  stroke: #F44336;
+  --circle-glow-color: #F44336;
+}
+
+/* Weather-based pulsating effect - the color pulses based on rating value */
+.pulse-ring.rating-excellent,
+.pulse-ring.rating-good {
+  animation: pulse-green 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.pulse-ring.rating-average {
+  animation: pulse-yellow 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.pulse-ring.rating-poor,
+.pulse-ring.rating-bad {
+  animation: pulse-red 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-green {
+  0% {
+    stroke: rgba(76, 175, 80, 0.3);
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    stroke: rgba(76, 175, 80, 0.7);
+    transform: scale(1.1);
+    opacity: 0.15;
+  }
+  100% {
+    stroke: rgba(76, 175, 80, 0.3);
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-yellow {
+  0% {
+    stroke: rgba(255, 193, 7, 0.3);
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    stroke: rgba(255, 193, 7, 0.7);
+    transform: scale(1.1);
+    opacity: 0.15;
+  }
+  100% {
+    stroke: rgba(255, 193, 7, 0.3);
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-red {
+  0% {
+    stroke: rgba(244, 67, 54, 0.3);
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    stroke: rgba(244, 67, 54, 0.7);
+    transform: scale(1.1);
+    opacity: 0.15;
+  }
+  100% {
+    stroke: rgba(244, 67, 54, 0.3);
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}

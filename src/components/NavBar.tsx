@@ -5,18 +5,10 @@ import InfoIcon from '@mui/icons-material/Info';
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
 import StarIcon from '@mui/icons-material/Star';
 import CloudIcon from '@mui/icons-material/Cloud';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 const NavBar: React.FC = () => {
   const location = useRouterLocation();
   const [scrolled, setScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(() => {
-    // Check if user previously enabled dark mode
-    const savedMode = localStorage.getItem('darkMode');
-    return savedMode === 'true';
-  });
-  
   // Add scroll effect to navbar
   useEffect(() => {
     const handleScroll = () => {
@@ -30,45 +22,29 @@ const NavBar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
   
-  // Apply dark mode
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('darkMode', 'true');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('darkMode', 'false');
-    }
-  }, [darkMode]);
-  
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+  // Dark mode logic removed for a cleaner, more consistent design
   
   return (
   <div className={`nav-bar ${scrolled ? 'scrolled' : ''}`}>
     <nav>
       <ul>
         <li className={location.pathname === '/' ? 'active' : ''}>
-          <Link to="/"><HomeIcon fontSize="small" /> Home</Link>
+          <Link to="/"><HomeIcon /> Home</Link>
         </li>
         <li className={location.pathname === '/about' ? 'active' : ''}>
-          <Link to="/about"><InfoIcon fontSize="small" /> About</Link>
+          <Link to="/about"><InfoIcon /> About</Link>
         </li>
         <li className={location.pathname === '/sport' ? 'active' : ''}>
-          <Link to="/sport"><DirectionsRunIcon fontSize="small" /> Sport</Link>
+          <Link to="/sport"><DirectionsRunIcon /> Sport</Link>
         </li>
         <li className={location.pathname === '/rating' ? 'active' : ''}>
-          <Link to="/rating"><StarIcon fontSize="small" /> Rating</Link>
+          <Link to="/rating"><StarIcon /> Rating</Link>
         </li>
         <li className={location.pathname === '/current-weather' ? 'active' : ''}>
-          <Link to="/current-weather"><CloudIcon fontSize="small" /> Weather</Link>
+          <Link to="/current-weather"><CloudIcon /> Weather</Link>
         </li>
       </ul>
     </nav>
-    <div className="dark-mode-toggle" onClick={toggleDarkMode} aria-label="Toggle dark mode">
-      {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
-    </div>
   </div>
   );
 };

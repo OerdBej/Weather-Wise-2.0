@@ -1,0 +1,118 @@
+.select-sport-container {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  margin: 1rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.select-sport-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.sport-icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.sport-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+  border-radius: 10px;
+  position: relative;
+}
+
+.sport-icon-wrapper:hover {
+  transform: translateY(-3px);
+}
+
+.sport-icon-wrapper.active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sport-icon-wrapper.active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background: linear-gradient(to right, #4CAF50, #8BC34A);
+  border-radius: 3px;
+  animation: pulseWidth 2s ease infinite;
+}
+
+@keyframes pulseWidth {
+  0% { width: 30%; left: 35%; }
+  50% { width: 50%; left: 25%; }
+  100% { width: 30%; left: 35%; }
+}
+
+.sport-icon {
+  background-color: #2a2a2a;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sport-icon-wrapper.active .sport-icon {
+  box-shadow: 0 0 0 2px #4CAF50, 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.sport-icon img {
+  width: 65%;
+  height: 65%;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+.sport-icon-wrapper:hover .sport-icon img {
+  transform: scale(1.1);
+}
+
+.sport-name {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.sport-icon-wrapper.active .sport-name {
+  color: #8BC34A;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .sport-icons-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .sport-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
